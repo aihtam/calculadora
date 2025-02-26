@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            left: 0;
+            margin: 0;
+        }
+    
+        #main{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 90vh;
+            font-size: 1.5rem;
+            font-family: 'Montserrat';
+            gap: 0.5rem;
+        }
+        #main input{
+            width: 15vw;
+            height: 5vh;
+        }
+
+        #main #button{
+            display: flex;
+            height: 5vh;
+            gap: 1rem;
+        }    
+    </style> 
+</head>
+<body>
+    <div id="main">
+        <form action="">
+            <p>Digite o primeiro número: <br> <input id="n1" type="number" placeholder="Digite o primeiro número"></p>
+        </form>
+        <form action="">
+            <p>Digite o segundo número: <br> <input id="n2" type="number" placeholder="Digite o segundo número"></p>
+        </form>
+
+        <div id="button">
+            <button type="button" id="adi">Adição</button>
+            <button type="button" id="sub">Subtração</button>
+            <button type="button" id="multi">Multiplicação</button>
+            <button type="button" id="divis">Divisão</button>
+        </div> 
+
+        <form action="">
+            <p>Resultado: <input id="result" type="number" placeholder="Resultado" readonly></p>
+        </form>
+    </div>
+<script>
+    const buttons = [
+        document.getElementById('adi'),
+        document.getElementById('sub'),
+        document.getElementById('multi'),
+        document.getElementById('divis')
+    ]
+
+    buttons.forEach((button) => {
+        button.onclick = function(oper){
+            const n1 = parseInt(document.getElementById('n1').value)
+            const n2 = parseInt(document.getElementById('n2').value)
+            let result = n1
+
+            switch(oper.target.id){
+                case ('adi') :
+                    result += n2
+                    break
+                case ('sub') : 
+                    result -= n2
+                    break
+                case ('multi') :
+                    result *= n2
+                    break
+                case ('divis') :
+                    result /= n2
+                    break
+            }
+
+            document.getElementById('result').value = result
+        }
+    })
+</script>  
+</body>
+</html>
